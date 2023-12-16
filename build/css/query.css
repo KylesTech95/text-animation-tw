@@ -1,0 +1,37 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box
+}
+.animation-container{
+    min-width: 25%;
+
+}
+.play-pause-container{
+    position: absolute;
+}
+.origin{
+    transition:1s;
+    top:1000px;
+    opacity:0;
+
+}
+.appear{
+    transition:1s;
+    top:5%;
+    opacity:1;
+}
+.btn-origin{
+opacity:0;
+transition:.3s;
+
+}
+#para{
+    padding: .5rem;
+}
+.btn-appear{
+opacity:1;
+transition:.3s ease-in;
+
+}
+
