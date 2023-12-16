@@ -26,6 +26,15 @@ opacity:0;
 transition:.3s;
 
 }
+.speed-btn{
+    transition: .3s;
+}
+.btn-active{
+    font-size: 22px;
+}
+.btn-not-active{
+    font-size: 11px;
+}
 #para{
     padding: .5rem;
 }

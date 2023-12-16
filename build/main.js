@@ -27,6 +27,14 @@ let containerHide = () => {
   },500)
 
 }
+btnActive = (btn) => {
+  btn.classList.add('btn-active')
+  btn.classList.remove('btn-not-active')
+}
+btnNotActive = (btn) => {
+  btn.classList.remove('btn-active')
+  btn.classList.add('btn-not-active')
+}
 let pauseAppear = () => {
   setTimeout(()=>{
     pause.classList.remove('btn-origin')
@@ -39,14 +47,13 @@ let pauseHide = () => {
     pause.classList.add('btn-origin')
     pause.classList.remove('btn-appear')
     pause.classList.add('pointer-events-none')
-
   },500)
 }
 let playAppear = () => {
   setTimeout(()=>{
     play.classList.remove('btn-origin')
     play.classList.add('btn-appear')
-    play.classList.remove('pointer-events-none')
+    play.classList.remove('pointer-events-none')  
 
   },500)
 }
@@ -89,7 +96,10 @@ function autoTextFn(text, heading, speed) {
     pauseHide()
 
     stop(timer)
-    btn_arr.forEach(btn => btn.classList.remove('pointer-events-none'))
+    btn_arr.forEach(b => {
+      b.classList.remove('pointer-events-none')
+      btnActive(b)
+  })
   })
 }
 
@@ -116,7 +126,12 @@ btn_arr.forEach((btn, i) => {
 
     if (e.target === btn) {
       autoTextFn(text, target, speed)
-      btn_arr.forEach(b => b.classList.add('pointer-events-none'))
+      btn_arr.forEach(b => {
+        b.classList.add('pointer-events-none')
+        btnNotActive(b)
+        pause.classList.add('bg-red-600')
+        pause.classList.add('text-white')
+    })
       play.addEventListener('click',()=>{
         playHide()
         pauseAppear()
