@@ -27,6 +27,30 @@ let containerHide = () => {
   },500)
 
 }
+let pauseBg = (pause) => {
+  setTimeout(()=>{
+    pause.classList.add('bg-red-600')
+    pause.classList.add('text-white')
+  },1000)
+}
+let playBg = (play) => {
+  setTimeout(()=>{
+    play.classList.add('bg-green-600')
+  play.classList.add('text-white')
+  },1000)
+}
+let pauseBgRm = (pause) => {
+  setTimeout(()=>{
+    pause.classList.remove('bg-red-600')
+    pause.classList.remove('text-white')
+  },1000)
+}
+let playBgRm = (play) => {
+  setTimeout(()=>{
+    play.classList.remove('bg-green-600')
+    play.classList.remove('text-white')
+  },1000)
+}
 btnActive = (btn) => {
   btn.classList.add('btn-active')
   btn.classList.remove('btn-not-active')
@@ -85,6 +109,8 @@ function autoTextFn(text, heading, speed) {
       containerHide()
       playHide()
       pauseHide()
+      pauseBgRm(pause)
+      playBgRm(play)
       clearInterval(timer)//clearInterval once both lengths are the same
       //enable pointer events for all buttons
       btn_arr.forEach(btn => btn.classList.remove('pointer-events-none'))
@@ -94,7 +120,8 @@ function autoTextFn(text, heading, speed) {
   pause.addEventListener('click',()=>{
     playAppear()
     pauseHide()
-
+    playBg(play)
+    pauseBgRm(pause)
     stop(timer)
     btn_arr.forEach(b => {
       b.classList.remove('pointer-events-none')
@@ -123,19 +150,21 @@ btn_arr.forEach((btn, i) => {
     speed = e.target.textContent
     let text = randomText()
     let target = paragraph
-
+    pauseBg(pause)
+    playBgRm(play)
     if (e.target === btn) {
       autoTextFn(text, target, speed)
       btn_arr.forEach(b => {
         b.classList.add('pointer-events-none')
         btnNotActive(b)
-        pause.classList.add('bg-red-600')
-        pause.classList.add('text-white')
     })
       play.addEventListener('click',()=>{
         playHide()
         pauseAppear()
+        pauseBg(pause)
+        playBgRm(play)
         autoTextFn(text, target, speed)
+        
         btn_arr.forEach(btn => btn.classList.add('pointer-events-none'))
       })
     }
