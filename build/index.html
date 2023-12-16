@@ -8,19 +8,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>text-animation</title>
 </head>
-<body class=" w-screen h-screen flex flex-col justify-center items-center relative">
-    <div class="bottom-1/4 btn-container absolute flex flex-row gap-12 justify-center items-center">
-        <button class="speed-btn mx-12 hover:pointer-cursor btn-active">25</button>
-        <button class="speed-btn mx-12 hover:pointer-cursor btn-active">50</button>
-        <button class="speed-btn mx-12 hover:pointer-cursor btn-active">75</button>
-        <button class="speed-btn px-12 hover:pointer-cursor btn-active">100</button>
+<body class=" w-screen h-screen flex flex-col justify-center items-center relative ">
+    <div class="bottom-1/4 btn-container absolute flex flex-row gap-12 justify-center items-center duration-300 appeared">
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">25</button>
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">50</button>
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">75</button>
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">100</button>
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">125</button>
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">150</button>
+        <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">200</button>
     </div>
-    <div class="play-pause-container mb-12 flex-flex-col p-3 w-3/6 origin">
-        <button class="pp play-btn p-2 border-green-600 border-2 rounded-2xl w-full hover:bg-green-300 hover:duration-300 mb-2 btn-origin pointer-events-none">PLAY</button>
-        <button class="pp pause-btn p-2 border-red-600 border-2 rounded-2xl w-full hover:bg-red-300 hover:duration-300 btn-origin pointer-events-none">PAUSE</button>
+    <div class="play-pause-container mb-12 flex-flex-col p-3 w-3/6 origin ">
+        <button class="pp play-btn p-2 rounded-2xl w-full hover:bg-black hover:text-white hover:duration-300 mb-2 btn-origin pointer-events-none">PLAY NEW TEXT (SAME SPEED)</button>
+        <button class="pp pause-btn p-2 rounded-2xl w-full hover:bg-black hover:text-white hover:duration-300 btn-origin pointer-events-none">PAUSE INTERVAL</button>
     </div>
     
-    <div id="animation-container" class="w-6/12 h-3/4 border-4 border-blue-400 flex flex-col justify-center items-center">
+    <div id="animation-container" class="w-6/12 h-3/4 flex flex-col justify-center items-center">
         <p id="para" class="rounded-2xl w-full text-red-400 text-center"></p>
     </div>
 </body>

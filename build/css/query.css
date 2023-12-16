@@ -26,14 +26,31 @@ opacity:0;
 transition:.3s;
 
 }
+.play-btn,
+.pause-btn{
+box-shadow: 0 0 4px .05px #838383
+}
 .speed-btn{
     transition: .3s;
 }
 .btn-active{
-    font-size: 22px;
+    transform: scale(1.5);
+}
+@keyframes pulse{
+    from{
+        transition:.3s;
+        opacity:0;
+    }
+    to{
+        transition:.3s;
+        opacity:1;
+    }
+}
+.scaled{
+    transform: scale(1)
 }
 .btn-not-active{
-    font-size: 11px;
+    transform: scale(0);
 }
 #para{
     padding: .5rem;
@@ -42,5 +59,11 @@ transition:.3s;
 opacity:1;
 transition:.3s ease-in;
 
+}
+.appeared{
+    transform: scale(1)
+}
+.hidden-back{
+    transform: scale(0)
 }
 
