@@ -7,10 +7,19 @@
 .animation-container{
     max-width: 25%;
 }
-
-.play-pause-container{
+body{
+    position:fixed;
+    top:0;
+    left:0
+}
+.animation-container2{
+    scroll-behavior: smooth;
+}
+.play-pause-container,
+.play-pause-container2{
     position: absolute;
 }
+/*first animation(top)*/
 .origin{
     transition:1s;
     top:1000px;
@@ -19,7 +28,19 @@
 }
 .appear{
     transition:1s;
-    top:5%;
+    top:7%;
+    opacity:1;
+}
+/*second animation(bottom)*/
+.origin2{
+    transition:1s;
+    bottom:1000px;
+    opacity:0;
+
+}
+.appear2{
+    transition:1s;
+    bottom:0;
     opacity:1;
 }
 .btn-origin{
@@ -28,7 +49,9 @@ transition:.3s;
 
 }
 .play-btn,
-.pause-btn{
+.pause-btn,
+.play-btn2,
+.pause-btn2{
 box-shadow: 0 0 4px .05px #838383
 }
 .speed-btn,
@@ -36,7 +59,10 @@ box-shadow: 0 0 4px .05px #838383
     transition: .3s;
 }
 .btn-active{
-    transform: scale(1.5);
+    transform: scale(1.25);
+}
+.btn-not-active{
+    transform: scale(0);
 }
 @keyframes pulse{
     from{
@@ -48,16 +74,19 @@ box-shadow: 0 0 4px .05px #838383
         opacity:1;
     }
 }
-.scaled{
-    transform: scale(1)
-}
-.btn-not-active{
-    transform: scale(0);
-}
+
 #para,
 #para2{
     padding: .5rem;
     width: 400px;
+    max-height: 200px;
+    height:300px;
+    
+}
+#para2{
+overflow:hidden;
+scroll-behavior: smooth; 
+overflow-y:auto;    
 }
 .btn-appear{
 opacity:1;
