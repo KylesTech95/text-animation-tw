@@ -83,7 +83,8 @@ box-shadow: 0 0 4px .05px #838383
     height:300px;
     
 }
-#para2{
+#para2,
+#para{
 overflow:hidden;
 scroll-behavior: smooth; 
 overflow-y:auto;    
@@ -100,17 +101,9 @@ transition:.3s ease-in;
     transform: scale(0)
 }
 .blink-2{
-    animation: blink2 2s  ease alternate infinite;
+    opacity:0;
 }
-@keyframes blink2 {
-    0%{
-        opacity:1
-    }
-    100%{
-       opacity:0
-    }
-    
-}
+
 /* .rigid{
     animation: rigid .5s  ease alternate infinite;
 }

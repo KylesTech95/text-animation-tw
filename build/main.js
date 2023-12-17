@@ -157,7 +157,7 @@ let playAppear = () => {
   setTimeout(()=>{
     play.classList.remove('btn-origin')
     play.classList.add('btn-appear')
-    play.classList.remove('pointer-events-none')  
+    play.classList.remove('pointer-events-none')
 
   },150)
 }
@@ -187,7 +187,7 @@ let playAppear2 = () => {
   setTimeout(()=>{
     play2.classList.remove('btn-origin')
     play2.classList.add('btn-appear')
-    play2.classList.remove('pointer-events-none')  
+    play2.classList.remove('pointer-events-none')
 
   },150)
 }
@@ -229,7 +229,7 @@ let next = []
         btnActive(btn)
       })
     }
-  }, speed)  
+  }, speed)
  //clearInterval if pause btn is pressed
   pause.addEventListener('click',()=>{
     appearContainer()
@@ -282,7 +282,7 @@ let blinkFn = (button,bool) => {
   }
 
   }
-  
+
 blinkFn(btn_arr,false)
 blinkFn(btn_arr2,true)
 btn_arr.forEach((btn, i) => {
@@ -318,7 +318,7 @@ btn_arr.forEach((btn, i) => {
         btn_arr.forEach(btn => btn.classList.add('pointer-events-none'))
       })
     }
-    
+
   })
 })
 
@@ -333,31 +333,41 @@ function hoverEffect(arr){
     })
   })
 }
+function blinkMe(nw,sp){
+  nw.classList.add('blink-2')
+  console.log(sp)
+  setTimeout(()=>{
+    nw.classList.remove('blink-2')
+  },((sp)))
+}
 function textAnimationBlink(speed_arg,p2,bool){
   if(!bool){
     let spans = document.querySelectorAll('.fade')
-    consle.log(spans)
+    spans.forEach(sp=>sp.classList.remove('blink-2'))
   }
-  
   else{
 //set speed according to btn click
 p2.textContent = lorem_arr[Math.floor(Math.random()*lorem_arr.length)]
 //split text into an array
 let text = p2.textContent.split` `
-//map over the text array, enclose each word into a span, and assign to p2 
+//map over the text array, enclose each word into a span, and assign to p2
 p2.innerHTML = text.map(x=>`<span class="fade">${x}</span>`).join` `
 let allWords = document.querySelectorAll('.fade')
 for(let i=0; i < allWords.length; i++){
-  let nextWord = allWords[Math.floor(Math.random()*allWords.length)]
-  setTimeout(()=>{
-    nextWord.classList.add('blink-2')
+  // let nextWord = allWords[Math.floor(Math.random()*allWords.length)]
+  let timer2 = setTimeout(()=>{
+    blinkMe(allWords[i],speed_arg)
     hoverEffect(allWords)
-  },(speed_arg) * i)
+  },(speed_arg) * (i+1))
+  pause2.addEventListener('click',e=>{
+    clearTimeout(timer2)
+  })
 }
   }
 
 }
 btn_arr2.forEach(btn=>{
+
   btn.addEventListener('click',e=>{
     HideContainer2()
     containerAppear2()
@@ -371,13 +381,14 @@ btn_arr2.forEach(btn=>{
   })
 
     let first_letter = e.target.textContent[0]
-    speed2 = +first_letter * 1000;
+    speed2 = +first_letter * 500;
     paragraph2.style='opacity:0;transition:.25s;'
     setTimeout(()=>{
       paragraph2.style='opacity:1;transition:.25s;'
       textAnimationBlink(speed2,paragraph2,true)
-    },250)
+    },250)  
   })
+
 })
 //pause animation
 pause2.addEventListener('click',()=>{
@@ -402,42 +413,4 @@ play2.addEventListener('click',()=>{
           btn_arr2.forEach(btn => btn.classList.add('pointer-events-none'))
         })
 })
-
-// btn_arr.forEach((btn, i) => {
-
-//   btn.addEventListener('click', e => {
-//     HideContainer()
-//     containerAppear()
-//     pauseAppear()
-//     playHide()
-//     speed = e.target.textContent
-//     let text = randomText()
-//     let target = paragraph
-//     pauseBg(pause)
-//     playBgRm(play)
-//     paragraph.style='opacity:0;transition:.25s;'
-//     setTimeout(()=>{
-//       paragraph.style='opacity:1;transition:.25s;'
-//     },250)
-//     if (e.target === btn) {
-//       autoTextFn(text, target, speed)
-//       btn_arr.forEach(b => {
-//         b.classList.add('pointer-events-none')
-//         btnNotActive(b)
-//     })
-//       play.addEventListener('click',()=>{
-//         HideContainer()
-//         playHide()
-//         pauseAppear()
-//         pauseBg(pause)
-//         playBgRm(play)
-//         autoTextFn(text, target, speed)
-//         btn_arr.forEach(btn => btn.classList.add('pointer-events-none'))
-//       })
-//     }
-    
-//   })
-// })
-
-
 
