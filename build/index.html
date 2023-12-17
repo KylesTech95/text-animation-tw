@@ -8,8 +8,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>text-animation</title>
 </head>
-<body class=" w-screen h-screen flex flex-col justify-center items-center relative ">
-    <div class="bottom-1/4 btn-container absolute flex flex-row gap-12 justify-center items-center duration-300 appeared">
+<body class="w-screen h-screen flex flex-col justify-center items-center ">
+<section id="top" class="border-2 border-purple-400 w-screen flex-col flex justify-center items-center">
+    <div class="bottom-3/4 btn-container absolute flex flex-row gap-12 justify-center items-center duration-300 appeared">
         <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">25</button>
         <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">50</button>
         <button class="speed-btn p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">75</button>
@@ -26,6 +27,23 @@
     <div id="animation-container" class="w-6/12 h-3/4 flex flex-col justify-center items-center">
         <p id="para" class="rounded-2xl w-full text-red-400 text-center"></p>
     </div>
+</section>
+
+<!--text falls/fades & rises/appears randomly-->
+    <section id="mid" class="border-2 border-purple-400 w-screen flex-col flex justify-center items-center">
+        <div id="animation-container2" class="w-6/12 h-3/4 flex flex-col justify-center items-center">
+            <p id="para2" class="rounded-2xl w-full text-red-400 text-center"></p>
+        </div>
+        <div class="bottom-1.5 btn-container absolute flex flex-row gap-12 justify-center items-center duration-300 appeared">
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">1s</button>
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">2s</button>
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">3s</button>
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">4s</button>
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">5s</button>
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">6s</button>
+            <button class="speed-btn2 p-3 hover:bg-red-400 duration-300 hover:pointer-cursor btn-active rounded-2xl btn-active">7s</button>
+        </div>
+    </section>
 </body>
 <script src="main.js"></script>
 </html>

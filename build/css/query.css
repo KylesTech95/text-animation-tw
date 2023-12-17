@@ -1,12 +1,13 @@
 *{
     margin:0;
     padding:0;
-    box-sizing: border-box
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 .animation-container{
-    min-width: 25%;
-
+    max-width: 25%;
 }
+
 .play-pause-container{
     position: absolute;
 }
@@ -30,7 +31,8 @@ transition:.3s;
 .pause-btn{
 box-shadow: 0 0 4px .05px #838383
 }
-.speed-btn{
+.speed-btn,
+.speed-btn2{
     transition: .3s;
 }
 .btn-active{
@@ -52,8 +54,10 @@ box-shadow: 0 0 4px .05px #838383
 .btn-not-active{
     transform: scale(0);
 }
-#para{
+#para,
+#para2{
     padding: .5rem;
+    width: 400px;
 }
 .btn-appear{
 opacity:1;
@@ -66,4 +70,32 @@ transition:.3s ease-in;
 .hidden-back{
     transform: scale(0)
 }
+.blink-2{
+    animation: blink2 2s  ease alternate infinite;
+}
+@keyframes blink2 {
+    0%{
+        opacity:1
+    }
+    100%{
+       opacity:0
+    }
+    
+}
+/* .rigid{
+    animation: rigid .5s  ease alternate infinite;
+}
+@keyframes rigid {
+    0%{
+        transform:translate(0,0)
+    }
+    50%{
+        transform:translate(0,10px)
+    }
+    100%{
+        transform:translate(0,5px)
+    }
+    
+} */
+
 

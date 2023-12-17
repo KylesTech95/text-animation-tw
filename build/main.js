@@ -1,12 +1,16 @@
 //Global variables
 let paragraph = document.getElementById('para')
+let paragraph2 = document.getElementById('para2')
  let lorem_arr = ['Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam cupiditate doloremque repellat, tempore, officia placeat ex provident accusantium blanditiis, accusamus aspernatur iure fugit dolorum consectetur qui porro eaque dolorem nihil soluta ipsam excepturi natus. Cumque qui labore rem, delectus minima veritatis modi voluptas assumenda molestiae nemo fugit illum sunt dicta.',
   'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis quae accusamus maiores neque facere reprehenderit error cumque iusto. Sit praesentium itaque sequi quae! Quia, veritatis!',
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti pariatur distinctio doloribus iste aperiam nostrum officiis, fuga placeat sit neque perspiciatis vero odio voluptatum quidem ullam vel, dolores, facere necessitatibus fugiat reiciendis dolorum natus minus. Consequatur dignissimos nostrum molestias dolor a dolores, ut explicabo inventore sed tempore, sunt recusandae quaerat eos reiciendis soluta architecto non! Dolorem, quae impedit delectus ab obcaecati sint repudiandae! Nemo, ullam modi placeat maiores alias consectetur eligendi veniam non voluptatibus magni!',
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veritatis minima tempora cum quia repellat illo ex, dignissimos asperiores suscipit temporibus deserunt quis sequi quibusdam, fuga molestiae sit voluptatibus nisi error nulla alias. Minus similique quidem minima obcaecati optio, suscipit ab. Doloremque nam tempore quo facere cumque. Similique et, est quibusdam ab velit unde provident tenetur veniam placeat vero natus quidem nisi omnis ratione doloremque nobis pariatur distinctio amet minima soluta, saepe magni iure! Sequi fuga aperiam dolorem quisquam quod modi incidunt nostrum id eius beatae voluptas adipisci accusantium, non libero pariatur aliquid corrupti rem dolorum tempore doloribus aspernatur autem?']
 // let lorem_arr=['Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis quae accusamus maiores neque facere reprehenderit error cumque iusto. Sit praesentium itaque sequi quae! Quia, veritatis!']
+let lorem_txt = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis quae accusamus maiores neque facere reprehenderit error cumque iusto. Sit praesentium itaque sequi quae! Quia, veritatis!'
 let btn_arr = document.querySelectorAll('.speed-btn')
+let btn_arr2 = document.querySelectorAll('.speed-btn2')
 let speed = null;
+let speed2 = 2000;
 let pause = document.querySelector('.pause-btn')
 let play = document.querySelector('.play-btn')
 let pp_container = document.querySelector('.play-pause-container')
@@ -210,6 +214,32 @@ btn_arr.forEach((btn, i) => {
 })
 
 
+
+function textAnimationBlink(){
+//set speed according to btn click
+btn_arr2.forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    speed2 = e.target.textContext.slice(1);
+    console.log(speed2)
+  })
+})
+paragraph2.textContent = lorem_txt
+//split text into an array
+let text = paragraph2.textContent.split` `
+//map over the text array, enclose each word into a span, and assign to paragraph2 
+paragraph2.innerHTML = text.map(x=>`<span class="fade">${x}</span>`).join` `
+let allWords = document.querySelectorAll('.fade')
+for(let i=0; i < allWords.length; i++){
+  let nextWord = allWords[Math.floor(Math.random()*allWords.length)]
+  setTimeout(()=>{
+    console.log(nextWord)
+    nextWord.classList.add('blink-2')
+  },(speed2) * i)
+
+}
+}
+
+textAnimationBlink()
 
 
 
