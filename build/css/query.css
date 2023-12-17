@@ -103,7 +103,11 @@ transition:.3s ease-in;
 .blink-2{
     opacity:0;
 }
-
+.options-container{
+    transform:translate(0,30px);
+    gap:1rem;
+    border-radius:12px;
+}
 /* .rigid{
     animation: rigid .5s  ease alternate infinite;
 }

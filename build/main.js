@@ -18,7 +18,7 @@ let pause2 = document.querySelector('.pause-btn2')
 let play2 = document.querySelector('.play-btn2')
 let btn_container = document.querySelector('.btn-container')
 let btn_container2 = document.querySelector('.btn-container2')
-
+let optionsArr = document.querySelectorAll('.btn-option')
 function stop(timer){
 clearInterval(timer)
 }
@@ -333,12 +333,50 @@ function hoverEffect(arr){
     })
   })
 }
+
 function blinkMe(nw,sp){
   nw.classList.add('blink-2')
   console.log(sp)
   setTimeout(()=>{
     nw.classList.remove('blink-2')
   },((sp)))
+}
+function whichBtn(words,speed_arg){
+  optionsArr.forEach(opt=>{
+    opt.addEventListener('click',e=>{
+      console.log(e.target)
+      if(e.target.textContent==='ASC'){
+        console.log('asc')
+          for(let i=0; i < words.length; i++){
+            // let nextWord = words[Math.floor(Math.random()*words.length)]
+            let timer2 = setTimeout(()=>{
+              blinkMe(words[i],speed_arg)
+              hoverEffect(words)
+            },(speed_arg) * (i+1))
+            pause2.addEventListener('click',e=>{
+              clearTimeout(timer2)
+            })
+          }
+          return;
+      }
+      if(e.target.textContent==='DESC'){
+        console.log('dec')
+
+        for(let i=words.length-1; i > 0; i--){
+          // let nextWord = words[Math.floor(Math.random()*words.length)]
+          let timer2 = setTimeout(()=>{
+            i = (button.length-1)-i
+            blinkMe(words[i],speed_arg)
+            hoverEffect(words)
+          },(speed_arg) * (i+1))
+          pause2.addEventListener('click',e=>{
+            clearTimeout(timer2)
+          })
+        }
+        return;
+    }
+    })
+  })
 }
 function textAnimationBlink(speed_arg,p2,bool){
   if(!bool){
@@ -353,16 +391,7 @@ let text = p2.textContent.split` `
 //map over the text array, enclose each word into a span, and assign to p2
 p2.innerHTML = text.map(x=>`<span class="fade">${x}</span>`).join` `
 let allWords = document.querySelectorAll('.fade')
-for(let i=0; i < allWords.length; i++){
-  // let nextWord = allWords[Math.floor(Math.random()*allWords.length)]
-  let timer2 = setTimeout(()=>{
-    blinkMe(allWords[i],speed_arg)
-    hoverEffect(allWords)
-  },(speed_arg) * (i+1))
-  pause2.addEventListener('click',e=>{
-    clearTimeout(timer2)
-  })
-}
+whichBtn(allWords,speed_arg)
   }
 
 }
