@@ -19,6 +19,7 @@ let play2 = document.querySelector('.play-btn2')
 let btn_container = document.querySelector('.btn-container')
 let btn_container2 = document.querySelector('.btn-container2')
 let optionsArr = document.querySelectorAll('.btn-option')
+let optionsContainer = document.querySelectorAll('.options-container')
 function stop(timer){
 clearInterval(timer)
 }
@@ -341,9 +342,30 @@ function blinkMe(nw,sp){
     nw.classList.remove('blink-2')
   },((sp)))
 }
+function optionsAppear(elem){
+  elem.classList.remove('options-not-active')
+  elem.classList.add('options-active')
+}
+function optionsRemove(elem){
+  elem.classList.add('options-not-active')
+  elem.classList.remove('options-active')
+}
+function noPointer(arr){
+  arr.forEach(o=>o.classList.add('pointer-events-none'))
+}
+// noPointer(optionsArr)
+
+function yesPointer(arr){
+    arr.forEach(o=>o.classList.remove('pointer-events-none'))
+}
 function whichBtn(words,speed_arg){
   optionsArr.forEach(opt=>{
     opt.addEventListener('click',e=>{
+      noPointer(optionsArr)
+      pause2.addEventListener('click',e=>{
+        yesPointer(optionsArr)
+        // optionsAppear(optionsContainer)
+      })
       console.log(e.target)
       if(e.target.textContent==='ASC'){
         console.log('asc')
@@ -365,7 +387,7 @@ function whichBtn(words,speed_arg){
         for(let i=words.length-1; i > 0; i--){
           // let nextWord = words[Math.floor(Math.random()*words.length)]
           let timer2 = setTimeout(()=>{
-            i = (button.length-1)-i
+            i = (words.length)-i
             blinkMe(words[i],speed_arg)
             hoverEffect(words)
           },(speed_arg) * (i+1))
@@ -398,6 +420,7 @@ whichBtn(allWords,speed_arg)
 btn_arr2.forEach(btn=>{
 
   btn.addEventListener('click',e=>{
+    yesPointer(optionsArr)
     HideContainer2()
     containerAppear2()
     pauseAppear2()
@@ -421,6 +444,7 @@ btn_arr2.forEach(btn=>{
 })
 //pause animation
 pause2.addEventListener('click',()=>{
+  yesPointer(optionsArr)
   appearContainer2()
   playAppear2()
   pauseHide2()
@@ -433,6 +457,7 @@ pause2.addEventListener('click',()=>{
 })
 //play animation
 play2.addEventListener('click',()=>{
+          noPointer(optionsArr)
           textAnimationBlink(speed2,paragraph2,true)
           HideContainer2()
           playHide2()

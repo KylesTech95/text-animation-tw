@@ -64,6 +64,12 @@ box-shadow: 0 0 4px .05px #838383
 .btn-not-active{
     transform: scale(0);
 }
+.options-not-active{
+    transform: scale(0.01);
+}
+.options-active{
+    transform: scale(1);
+}
 @keyframes pulse{
     from{
         transition:.3s;
@@ -104,24 +110,8 @@ transition:.3s ease-in;
     opacity:0;
 }
 .options-container{
-    transform:translate(0,30px);
     gap:1rem;
     border-radius:12px;
+    transition:.3s;
 }
-/* .rigid{
-    animation: rigid .5s  ease alternate infinite;
-}
-@keyframes rigid {
-    0%{
-        transform:translate(0,0)
-    }
-    50%{
-        transform:translate(0,10px)
-    }
-    100%{
-        transform:translate(0,5px)
-    }
-    
-} */
-
 
