@@ -397,6 +397,22 @@ function whichBtn(words,speed_arg){
         }
         return;
     }
+    if(e.target.textContent==='RANDOM'){
+      console.log('random')
+
+      for(let i=words.length-1; i > 0; i--){
+        let nextWord = words[Math.floor(Math.random()*words.length)]
+        let timer2 = setTimeout(()=>{
+          i = (words.length)-i
+          blinkMe(nextWord,speed_arg)
+          hoverEffect(words)
+        },(speed_arg) * (i+1))
+        pause2.addEventListener('click',e=>{
+          clearTimeout(timer2)
+        })
+      }
+      return;
+  }
     })
   })
 }
@@ -457,7 +473,6 @@ pause2.addEventListener('click',()=>{
 })
 //play animation
 play2.addEventListener('click',()=>{
-          noPointer(optionsArr)
           textAnimationBlink(speed2,paragraph2,true)
           HideContainer2()
           playHide2()
