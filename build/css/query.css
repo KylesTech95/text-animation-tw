@@ -46,6 +46,9 @@
 .blink-2{
     opacity:0;
 }
+.blink-2-visible{
+    opacity:1;
+}
 .options-container{
     gap:1rem;
     border-radius:12px;
@@ -67,8 +70,15 @@ box-shadow: 0 0 4px .05px #838383
 .speed-btn2{
     transition: .3s;
 }
+.displayElem{
+    font-size: 10rem;
+    opacity:.05;
+    letter-spacing: 1rem;
+    z-index:0;
+}
 #para,
 #para2{
+    z-index:999;
     padding: .5rem;
     width: 400px;
     max-height: 200px;
@@ -76,6 +86,7 @@ box-shadow: 0 0 4px .05px #838383
     overflow:hidden;
     scroll-behavior: smooth; 
     overflow-y:auto;  
+    font-size: 22px;
 }
 .btn-origin{
 opacity:0;

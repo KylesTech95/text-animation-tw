@@ -20,6 +20,7 @@ let btn_container = document.querySelector('.btn-container')
 let btn_container2 = document.querySelector('.btn-container2')
 let optionsArr = document.querySelectorAll('.btn-option')
 let optionsContainer = document.querySelector('.options-container')
+let disElem = document.querySelector('.displayElem')
 function stop(timer) {
   clearInterval(timer)
 }
@@ -360,16 +361,19 @@ function yesPointer(arr) {
 }
 
 function whichBtn(words, speed_arg, options) {
+  let display = `ASC-${speed_arg}`
+  disElem.textContent = display
+  for (let i = 0; i < words.length; i++) {
+    let timer2 = setTimeout(() => {
+      blinkMe(words[i], speed_arg)
+      hoverEffect(words)
+    }, (speed_arg) * (i + 1))
+    pause2.addEventListener('click', e => {
+      clearTimeout(timer2)
+      disElem.textContent = ''
+    })
+  }
   options.forEach(opt => {
-    for (let i = 0; i < words.length; i++) {
-      let timer2 = setTimeout(() => {
-        blinkMe(words[i], speed_arg)
-        hoverEffect(words)
-      }, (speed_arg) * (i + 1))
-      pause2.addEventListener('click', e => {
-        clearTimeout(timer2)
-      })
-    }
     opt.addEventListener('click', e => {
       // textAnimationBlink(speed2,paragraph2,true)
       noPointer(options)
@@ -378,6 +382,7 @@ function whichBtn(words, speed_arg, options) {
         // optionsAppear(optionsContainer)
       })
       if (e.target.textContent === 'ASC') {
+        disElem.textContent = `ASC-${speed_arg}`
         console.log('asc')
         for (let i = 0; i < words.length; i++) {
           // let nextWord = words[Math.floor(Math.random()*words.length)]
@@ -387,11 +392,13 @@ function whichBtn(words, speed_arg, options) {
           }, (speed_arg) * (i + 1))
           pause2.addEventListener('click', e => {
             clearTimeout(timer2)
+            disElem.textContent = ''
           })
         }
         return;
       }
       if (e.target.textContent === 'DESC') {
+        disElem.textContent = `DESC-${speed_arg}`
         console.log('dec')
 
         for (let i = words.length - 1; i > 0; i--) {
@@ -403,12 +410,14 @@ function whichBtn(words, speed_arg, options) {
           }, (speed_arg) * (i + 1))
           pause2.addEventListener('click', e => {
             clearTimeout(timer2)
+            disElem.textContent = ''
           })
         }
         return;
       }
       if (e.target.textContent === 'RANDOM') {
         console.log('random')
+        disElem.textContent = `RANDOM-${speed_arg}`
 
         for (let i = words.length - 1; i > 0; i--) {
           let nextWord = words[Math.floor(Math.random() * words.length)]
@@ -419,6 +428,7 @@ function whichBtn(words, speed_arg, options) {
           }, (speed_arg) * (i + 1))
           pause2.addEventListener('click', e => {
             clearTimeout(timer2)
+            disElem.textContent = ''
           })
         }
         return;
@@ -455,6 +465,7 @@ optionsArr.forEach(opt => {
     HideContainer2()
   })
 })
+optionsRemove(optionsContainer)
 btn_arr2.forEach(btn => {
 
   btn.addEventListener('click', e => {
@@ -504,6 +515,7 @@ pause2.addEventListener('click', () => {
     pauseAppear2()
     pauseBg2(pause2)
     playBgRm2(play2)
+    optionsRemove(optionsContainer)
     btn_arr2.forEach(btn => btn.classList.add('pointer-events-none'))
   })
 })
