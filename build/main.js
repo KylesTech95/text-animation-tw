@@ -24,6 +24,19 @@ let disElem = document.querySelector('.displayElem')
 function stop(timer) {
   clearInterval(timer)
 }
+let playMe=(play)=>{
+  play.addEventListener('click', () => {
+    textAnimationBlink(speed2, paragraph2, true)
+    noPointer(optionsArr)
+    HideContainer2()
+    playHide2()
+    pauseAppear2()
+    pauseBg2(pause2)
+    playBgRm2(play2)
+    optionsRemove(optionsContainer)
+    btn_arr2.forEach(btn => btn.classList.add('pointer-events-none'))
+  })
+}
 let containerAppear = () => {
   pp_container.classList.remove('origin')
   pp_container.classList.add('appear')
@@ -270,7 +283,6 @@ let blinkFn = (button, bool) => {
       // blink right to left
       setTimeout(() => {
         i = (button.length - 1) - i
-        console.log(i)
         blink(button[i])
       }, 100 * (i))
     }
@@ -338,7 +350,6 @@ function hoverEffect(arr) {
 
 function blinkMe(nw, sp) {
   nw.classList.add('blink-2')
-  console.log(sp)
   setTimeout(() => {
     nw.classList.remove('blink-2')
   }, ((sp)))
@@ -367,6 +378,21 @@ function whichBtn(words, speed_arg, options) {
     let timer2 = setTimeout(() => {
       blinkMe(words[i], speed_arg)
       hoverEffect(words)
+      if(i===words.length-1){
+        yesPointer(optionsArr)
+        appearContainer2()
+        playAppear2()
+        pauseHide2()
+        playBg2(play2)
+        pauseBgRm2(pause2)
+        textAnimationBlink(speed2, paragraph2, false)
+        optionsAppear(optionsContainer)
+        btn_arr2.forEach(b => {
+          b.classList.remove('pointer-events-none')
+          btnActive2(b)
+        })
+        playMe(play2)
+      }
     }, (speed_arg) * (i + 1))
     pause2.addEventListener('click', e => {
       clearTimeout(timer2)
@@ -389,6 +415,21 @@ function whichBtn(words, speed_arg, options) {
           let timer2 = setTimeout(() => {
             blinkMe(words[i], speed_arg)
             hoverEffect(words)
+            if(i===words.length-1){
+              yesPointer(optionsArr)
+              appearContainer2()
+              playAppear2()
+              pauseHide2()
+              playBg2(play2)
+              pauseBgRm2(pause2)
+              textAnimationBlink(speed2, paragraph2, false)
+              optionsAppear(optionsContainer)
+              btn_arr2.forEach(b => {
+                b.classList.remove('pointer-events-none')
+                btnActive2(b)
+              })
+              playMe(play2)
+            }
           }, (speed_arg) * (i + 1))
           pause2.addEventListener('click', e => {
             clearTimeout(timer2)
@@ -401,12 +442,28 @@ function whichBtn(words, speed_arg, options) {
         disElem.textContent = `DESC-${speed_arg}`
         console.log('dec')
 
-        for (let i = words.length - 1; i > 0; i--) {
+        for (let i = words.length - 1; i >= 0; i--) {
           // let nextWord = words[Math.floor(Math.random()*words.length)]
           let timer2 = setTimeout(() => {
-            i = (words.length) - i
+            if(i==words.length-1){
+              yesPointer(optionsArr)
+              appearContainer2()
+              playAppear2()
+              pauseHide2()
+              playBg2(play2)
+              pauseBgRm2(pause2)
+              textAnimationBlink(speed2, paragraph2, false)
+              optionsAppear(optionsContainer)
+              btn_arr2.forEach(b => {
+                b.classList.remove('pointer-events-none')
+                btnActive2(b)
+              })
+              playMe(play2)
+            }
+            i = (words.length-1) - i
             blinkMe(words[i], speed_arg)
             hoverEffect(words)
+            
           }, (speed_arg) * (i + 1))
           pause2.addEventListener('click', e => {
             clearTimeout(timer2)
@@ -416,12 +473,28 @@ function whichBtn(words, speed_arg, options) {
         return;
       }
       if (e.target.textContent === 'RANDOM') {
-        console.log('random')
         disElem.textContent = `RANDOM-${speed_arg}`
 
         for (let i = words.length - 1; i > 0; i--) {
           let nextWord = words[Math.floor(Math.random() * words.length)]
           let timer2 = setTimeout(() => {
+            console.log([words.length-1,i])
+            if(i===words.length-1)console.log(i+' WORDS ACCOUNTED FOR')
+            if(i==words.length-1){
+              yesPointer(optionsArr)
+              appearContainer2()
+              playAppear2()
+              pauseHide2()
+              playBg2(play2)
+              pauseBgRm2(pause2)
+              textAnimationBlink(speed2, paragraph2, false)
+              optionsAppear(optionsContainer)
+              btn_arr2.forEach(b => {
+                b.classList.remove('pointer-events-none')
+                btnActive2(b)
+              })
+              playMe(play2)
+            }
             i = (words.length) - i
             blinkMe(nextWord, speed_arg)
             hoverEffect(words)
@@ -507,16 +580,6 @@ pause2.addEventListener('click', () => {
     btnActive2(b)
   })
   //play animation
-  play2.addEventListener('click', () => {
-    textAnimationBlink(speed2, paragraph2, true)
-    noPointer(optionsArr)
-    HideContainer2()
-    playHide2()
-    pauseAppear2()
-    pauseBg2(pause2)
-    playBgRm2(play2)
-    optionsRemove(optionsContainer)
-    btn_arr2.forEach(btn => btn.classList.add('pointer-events-none'))
-  })
+  playMe(play2)
 })
 
