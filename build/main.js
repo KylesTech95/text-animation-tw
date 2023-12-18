@@ -230,13 +230,13 @@ function autoTextFn(text, heading, speed) {
     if (arr.length === len) {
       setTimeout(() => {
         appearContainer()
+        playBg(play)
+        playAppear()
         heading.textContent = ''
       }, 1500)
-      containerHide()
-      playHide()
+      // containerHide()
       pauseHide()
       pauseBgRm(pause)
-      playBgRm(play)
       clearInterval(timer)//clearInterval once both lengths are the same
       //enable pointer events for all buttons
       btn_arr.forEach(btn => {
@@ -478,8 +478,8 @@ function whichBtn(words, speed_arg, options) {
         for (let i = words.length - 1; i > 0; i--) {
           let nextWord = words[Math.floor(Math.random() * words.length)]
           let timer2 = setTimeout(() => {
-            console.log([words.length-1,i])
-            if(i===words.length-1)console.log(i+' WORDS ACCOUNTED FOR')
+            // console.log([words.length-1,i])
+            // if(i===words.length-1)console.log(i+' WORDS ACCOUNTED FOR')
             if(i==words.length-1){
               yesPointer(optionsArr)
               appearContainer2()
