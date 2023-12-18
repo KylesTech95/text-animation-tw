@@ -1,37 +1,31 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
+/*animation1*/
 .animation-container{
     max-width: 25%;
 }
-body{
-    position:fixed;
-    top:0;
-    left:0
-}
-.animation-container2{
-    scroll-behavior: smooth;
-}
-.play-pause-container,
-.play-pause-container2{
-    position: absolute;
-}
-/*first animation(top)*/
 .origin{
     transition:1s;
     top:1000px;
     opacity:0;
-
 }
 .appear{
     transition:1s;
     top:7%;
     opacity:1;
+}  
+.btn-active{
+    transform: scale(1.25);
 }
-/*second animation(bottom)*/
+.btn-not-active{
+    transform: scale(0);
+}
+/*_________________________________________________________________________________*/
+/*animation2*/
+.options-not-active{
+    transform: scale(0.01);
+}
+.options-active{
+    transform: scale(1);
+}
 .origin2{
     transition:1s;
     bottom:1000px;
@@ -42,63 +36,6 @@ body{
     transition:1s;
     bottom:0;
     opacity:1;
-}
-.btn-origin{
-opacity:0;
-transition:.3s;
-
-}
-.play-btn,
-.pause-btn,
-.play-btn2,
-.pause-btn2{
-box-shadow: 0 0 4px .05px #838383
-}
-.speed-btn,
-.speed-btn2{
-    transition: .3s;
-}
-.btn-active{
-    transform: scale(1.25);
-}
-.btn-not-active{
-    transform: scale(0);
-}
-.options-not-active{
-    transform: scale(0.01);
-}
-.options-active{
-    transform: scale(1);
-}
-@keyframes pulse{
-    from{
-        transition:.3s;
-        opacity:0;
-    }
-    to{
-        transition:.3s;
-        opacity:1;
-    }
-}
-
-#para,
-#para2{
-    padding: .5rem;
-    width: 400px;
-    max-height: 200px;
-    height:300px;
-    
-}
-#para2,
-#para{
-overflow:hidden;
-scroll-behavior: smooth; 
-overflow-y:auto;    
-}
-.btn-appear{
-opacity:1;
-transition:.3s ease-in;
-
 }
 .appeared{
     transform: scale(1)
@@ -114,4 +51,57 @@ transition:.3s ease-in;
     border-radius:12px;
     transition:.3s;
 }
+/*_________________________________________________________________________________*/
+/*both animations*/
+.play-pause-container,
+.play-pause-container2{
+    position: absolute;
+}
+.play-btn,
+.pause-btn,
+.play-btn2,
+.pause-btn2{
+box-shadow: 0 0 4px .05px #838383
+}
+.speed-btn,
+.speed-btn2{
+    transition: .3s;
+}
+#para,
+#para2{
+    padding: .5rem;
+    width: 400px;
+    max-height: 200px;
+    height:300px;
+    overflow:hidden;
+    scroll-behavior: smooth; 
+    overflow-y:auto;  
+}
+.btn-origin{
+opacity:0;
+transition:.3s;
+
+}
+.btn-appear{
+    opacity:1;
+    transition:.3s ease-in;
+    
+    }
+/*_________________________*/
+/*General*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    position:fixed;
+    top:0;
+    left:0
+}
+
+
+
+
+
 
